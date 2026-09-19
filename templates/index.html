@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}首页 - 乐安博客{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>欢迎来到乐安博客</h1>
+    <p>记录学习、分享想法，一起在校园里慢慢成长 ✨</p>
+</section>
+
+<div class="section-head">
+    <h2>最新文章</h2>
+</div>
+
+<div class="post-list">
+    {% for post in posts %}
+    <article class="post-card">
+        <span class="post-date">{{ post.date }}</span>
+        <span class="post-author">作者：{{ post.author_name or "佚名" }}</span>
+        <h3 class="post-title">
+            <a href="/post/{{ post.id }}">{{ post.title }}</a>
+        </h3>
+        <a class="read-more" href="/post/{{ post.id }}">阅读全文 →</a>
+    </article>
+    {% else %}
+    <p class="empty">还没有文章，来写第一篇吧！</p>
+    {% endfor %}
+</div>
+
+<div class="more-box">
+    <a class="btn btn-primary" href="/posts">查看全部文章</a>
+</div>
+{% endblock %}

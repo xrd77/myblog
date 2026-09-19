@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}文章 - 乐安博客{% endblock %}
+
+{% block content %}
+<div class="section-head">
+    <h2>全部文章</h2>
+</div>
+
+<div class="post-list">
+    {% for post in posts %}
+    <article class="post-card">
+        <span class="post-date">{{ post.date }}</span>
+        <span class="post-author">作者：{{ post.author_name or "佚名" }}</span>
+        <h3 class="post-title">
+            <a href="/post/{{ post.id }}">{{ post.title }}</a>
+        </h3>
+        <a class="read-more" href="/post/{{ post.id }}">阅读全文 →</a>
+    </article>
+    {% else %}
+    <p class="empty">还没有文章。</p>
+    {% endfor %}
+</div>
+
+<div class="more-box">
+    <a class="btn" href="/">返回首页</a>
+    <a class="btn btn-primary" href="/new">写文章</a>
+</div>
+{% endblock %}

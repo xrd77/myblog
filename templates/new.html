@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}写文章 - 乐安博客{% endblock %}
+
+{% block content %}
+<div class="form-card">
+    <h1>写一篇新文章</h1>
+    <p class="subtitle">把你的想法写下来吧 ✍️</p>
+    <form method="post" action="/new">
+        <div class="form-group">
+            <label for="title">标题</label>
+            <input type="text" id="title" name="title" placeholder="给文章起个标题吧" required>
+        </div>
+        <div class="form-group">
+            <label for="content">内容</label>
+            <textarea id="content" name="content" placeholder="开始写正文……" required></textarea>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">发布</button>
+            <a class="btn" href="/">返回首页</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

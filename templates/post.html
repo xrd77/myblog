@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - 乐安博客{% endblock %}
+
+{% block content %}
+<article class="post-detail">
+    <span class="post-date">{{ post.date }}</span>
+    <h1>{{ post.title }}</h1>
+    <span class="post-author">作者：{{ post.author_name or "佚名" }}</span>
+    <div class="post-content">{{ post.content }}</div>
+</article>
+
+<div class="post-actions">
+    {% if session.get("user_id") == post.author_id %}
+    <a class="btn" href="/edit/{{ post.id }}">编辑</a>
+    <form method="post" action="/delete/{{ post.id }}" class="inline-form"
+          onsubmit="return confirm('确定要删除这篇文章吗？');">
+        <button type="submit" class="btn btn-danger">删除</button>
+    </form>
+    {% endif %}
+    <a class="back-link" href="/">← 返回首页</a>
+</div>
+{% endblock %}
