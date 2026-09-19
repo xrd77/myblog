@@ -7,15 +7,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = "ylan-blog-2026-secret"
 
-DB_CONFIG = {
-    "host": "localhost",
-    "port": 3306,
-    "user": "bloguser",
-    "password": "blog123456",
-    "database": "blog",
-    "charset": "utf8mb4",
-    "cursorclass": pymysql.cursors.DictCursor,
-}
+try:
+    from db_config import DB_CONFIG
+except ImportError:
+    raise SystemExit(
+        "缺少 db_config.py：请把 db_config.example.py 复制一份改名为 db_config.py，"
+        "并填入你自己的数据库用户名和密码。"
+    )
 
 
 @app.route("/")

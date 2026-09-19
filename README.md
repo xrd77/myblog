@@ -25,6 +25,7 @@
 ```
 myblog/
 ├── app.py                 # 后端：路由 + 数据库操作 + 权限校验
+├── db_config.example.py   # 数据库配置模板（复制成 db_config.py 后填密码）
 ├── requirements.txt       # 依赖清单
 ├── templates/             # 页面模板（首页/文章/详情/写文章/编辑/登录/注册/关于）
 └── static/                # 样式与图标（style.css、favicon.svg）
@@ -60,7 +61,13 @@ CREATE TABLE users (
 ) DEFAULT CHARSET=utf8mb4;
 ```
 
-3. 安装依赖并启动：
+3. 配置数据库连接：把 `db_config.example.py` 复制一份改名为 `db_config.py`，填入你自己的用户名和密码：
+
+```bash
+copy db_config.example.py db_config.py
+```
+
+4. 安装依赖并启动：
 
 ```bash
 python -m venv .venv
@@ -68,7 +75,7 @@ python -m venv .venv
 .venv\Scripts\python app.py
 ```
 
-4. 浏览器打开 http://127.0.0.1:5000
+5. 浏览器打开 http://127.0.0.1:5000
 
 ## 后续计划
 
